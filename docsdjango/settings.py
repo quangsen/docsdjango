@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'contact',
     'blog',
-    'dashboard'
+    'dashboard',
+    'runapp'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'docsdjango',
         'USER': 'root',
-        'PASSWORD': 'Secret@123'
+        'PASSWORD': '0000'
     }
 }
 

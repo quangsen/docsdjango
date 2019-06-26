@@ -8,17 +8,12 @@ def index(request):
     key = 'dashboard:index'
 
     data = cache.get(key, version=generation)
-    subClassModel = Metric.__subclasses__()
-    # for x in subClassModel:
-    #     print(x.toitinma('mimi'))
-
-    # if data is None:
-    #     metrics = []
-    #     subClassModel = Metric.__subclasses__()
-    #     for x in subClassModel:
-    #         print(x.toitinma('mimi'))
+    if data is None:
+        metrics = []
+        for MC in Metric.__subclasses__():
+            metrics.extend(MC.objects.filter(show_on_dashboard=True))
         
-    #     data = []
-    #     cache.set(key, data, 60 * 60, version=generation)
+        data = []
+        cache.set(key, data, 60 * 60, version=generation)
 
     return render(request, 'dashboard/index.html', {'data': data})
